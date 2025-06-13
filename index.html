@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Creation - Sheetal Looms</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">SHEETAL LOOMS</div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Fabric Types <span class="arrow">▾</span></a>
+            <ul class="dropdown-content">
+              <li><a href="#">Crepe</a></li>
+              <li><a href="#">Georgette</a></li>
+              <li><a href="#">Jacquard</a></li>
+              <li><a href="#">Organza</a></li>
+              <li><a href="#">Velvet</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Services <span class="arrow">▾</span></a>
+            <ul class="dropdown-content">
+              <li><a href="#">Bulk Orders for Designers</a></li>
+              <li><a href="#">Custom Dyeing</a></li>
+              <li><a href="#">Customization</a></li>
+              <li><a href="#">Fabric Printing</a></li>
+              <li><a href="#">Tailoring or Stitching</a></li>
+              <li><a href="#">Wholesale Orders</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#">Luxury</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." />
+        <button type="submit">🔍</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Timeless Weaves for Every Woman</h1>
+      <p>
+        Where tradition meets trend — our sarees blend classic charm with contemporary flair.
+        Designed for the modern woman, each piece makes a bold and beautiful style statement.
+      </p>
+      <a href="#" class="cta-button">Start Visiting</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="saree-heading-box">
+      <h2>Why Choose Our Sarees?</h2>
+    </div>
+
+    <div class="feature-list">
+      <div class="feature feature-left">
+        <div class="feature-text">
+          <h3>Premium Fabrics</h3>
+          <p>
+            Crafted with luxurious silk, cotton, and chiffon blends, our sarees offer unmatched comfort and elegance for any occasion.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature feature-right">
+        <div class="feature-text">
+          <h3>Modern & Traditional Designs</h3>
+          <p>
+            From timeless classics to contemporary prints, our collection blends cultural heritage with fashion-forward styles.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature feature-left">
+        <div class="feature-text">
+          <h3>Perfect Draping & Fit</h3>
+          <p>
+            Designed to flatter every body type, our sarees ensure a graceful drape that boosts confidence and charm.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dropdown Script -->
+  <script>
+    // Toggle dropdowns on click
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        const dropdown = this.nextElementSibling;
+
+        document.querySelectorAll('.dropdown-content').forEach(menu => {
+          if (menu !== dropdown) menu.style.display = 'none';
+        });
+
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-content').forEach(menu => {
+          menu.style.display = 'none';
+        });
+      }
+    });
+  </script>
+</body>
+</html>
