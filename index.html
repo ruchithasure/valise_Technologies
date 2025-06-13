@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Creation - Sheetal Looms</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ff6600;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+      color: white;
+    }
+
+    nav {
+      flex: 1;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-size: 17px;
+    }
+
+    /* Dropdown Menu */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 35px;
+      left: 0;
+      background-color: #333;
+      min-width: 200px;
+      border-radius: 5px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+
+    .dropdown-content li {
+      display: block;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 15px;
+      color: white;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Search bar */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .search-bar input {
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .search-bar button {
+      padding: 6px 10px;
+      background-color: #ff6600;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #1a1a1a;
+        flex-direction: column;
+        padding: 10px 0;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .dropdown-content {
+        position: static;
+        background-color: #333;
+        border-radius: 0;
+        box-shadow: none;
+        display: none;
+        width: 100%;
+      }
+
+      .dropdown.active .dropdown-content {
+        display: block;
+      }
+
+      .search-bar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">SHEETAL LOOMS</div>
+
+      <!-- Toggle icon for mobile -->
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+
+      <!-- Navigation -->
+      <nav id="nav-menu">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Fabric Types ▾</a>
+            <ul class="dropdown-content">
+              <li><a href="#">Crepe</a></li>
+              <li><a href="#">Georgette</a></li>
+              <li><a href="#">Jacquard</a></li>
+              <li><a href="#">Organza</a></li>
+              <li><a href="#">Velvet</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Services ▾</a>
+            <ul class="dropdown-content">
+              <li><a href="#">Bulk Orders</a></li>
+              <li><a href="#">Custom Dyeing</a></li>
+              <li><a href="#">Customization</a></li>
+              <li><a href="#">Fabric Printing</a></li>
+              <li><a href="#">Tailoring</a></li>
+              <li><a href="#">Wholesale Orders</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." />
+        <button type="submit">🔍</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- JavaScript to toggle menu -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const dropdownToggles = document.querySelectorAll('.dropdown > a');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    dropdownToggles.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const parent = link.parentElement;
+          parent.classList.toggle('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
